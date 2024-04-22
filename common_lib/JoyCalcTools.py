@@ -1,3 +1,5 @@
+from enum_conf import *
+
 class JoyCalcTools:
     def __init__(self, MODE):
         self.__MODE = MODE
@@ -5,7 +7,7 @@ class JoyCalcTools:
 
     def recalculate_joy(self, joy):
         recalc_joy = [0] * 8
-        if self.__MODE == 0:
+        if self.__MODE == ControllerType.POTABLE.controller_id:
             recalc_joy[0] = joy.axes[0] * 127  #left-horizontal
             recalc_joy[1] = joy.axes[1] * 127  #left-vertical
             recalc_joy[2] = joy.axes[3] * -127  #right-horizontal
@@ -15,7 +17,7 @@ class JoyCalcTools:
             recalc_joy[6] = 0 #none
             recalc_joy[7] = 0 #none
             print(recalc_joy)
-        else:
+        elif self.__MODE == ControllerType.F310.controller_id:
             recalc_joy[0] = joy.axes[0] * 127  #left-horizontal
             recalc_joy[1] = joy.axes[1] * -127  #left-vertical
             recalc_joy[2] = joy.axes[2] * -127  #right-horizontal

@@ -1,15 +1,53 @@
-from enum import IntEnum
+from enum import IntEnum, Enum
 
 class WheelType(IntEnum):
     OMNI_3 = 0
     OMNI_4 = 1
     MECHANUM = 2
 
-class ControllerType(IntEnum):
-    F310 = 1
-    POTABLE = 0
+class F310_BTN(Enum):
+    A = (0, 1)
+    B = (1, 2)
+    X = (2, 0)
+    Y = (3, 3)
+    LB = (4, 4)
+    RB = (5, 5)
+    LSTICK = (6, 10)
+    RSTICK = (7, 11)
 
-class Reg(IntEnum):
+    def __init__(self, arr_id, btn_assign):
+        super().__init__()
+        self.arr_id = arr_id
+        self.btn_assign = btn_assign
+        return
+
+class POTABLE_BTN(Enum):
+    A = (0, 0)
+    B = (1, 1)
+    X = (2, 2)
+    Y = (3, 3)
+    LB = (4, 4)
+    RB = (5, 5)
+    LSTICK = (6, 9)
+    RSTICK = (7, 10)
+
+    def __init__(self, arr_id, btn_assign) -> None:
+        super().__init__()
+        self.arr_id = arr_id
+        self.btn_assign = btn_assign
+        return
+
+class ControllerType(Enum):
+    POTABLE = (0, POTABLE_BTN)
+    F310 = (1, F310_BTN)
+
+    def __init__(self, controller_id, btn_config) -> None:
+        super().__init__()
+        self.controller_id = controller_id
+        self.btn_config = btn_config
+        return
+
+class RoboMasReg(IntEnum):
     NOP = 0x0
     MOTOR_TYPE = 0x1
     CONTROL_TYPE = 0x2

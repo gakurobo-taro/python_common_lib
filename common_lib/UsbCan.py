@@ -1,4 +1,3 @@
-import os
 import can
 
 class UsbCan:
@@ -36,7 +35,7 @@ class UsbCan:
             try:
                 self.slcan = can.interface.Bus(self.__bus, bustype='slcan', bitrate=1000000)
             except:
-                print('Error')
+                print('Canbus Open Error')
             return
 
     def send(self, message):
@@ -52,9 +51,9 @@ class UsbCan:
         """
 
         if self.__usemode == True:
-            print("send")
             if self.__state == True:
                 self.slcan.send(msg=message)
+                print("CanMessage Send Success")
         print(message)
         return
 
@@ -74,16 +73,4 @@ class UsbCan:
         else:
             msg = None
         return msg
-
-# class CanMessage:
-#     def __init__(self, arbitration_id: int, is_extended_id: bool, data):
-#         msg = can.Message(
-#             arbitration_id= arbitration_id,
-#             is_extended_id= is_extended_id,
-#             data= data
-#         )
-#         self.return_msg(msg)
-
-#     def return_msg(self, message):
-#         return message
 

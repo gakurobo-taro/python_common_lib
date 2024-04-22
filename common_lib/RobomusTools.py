@@ -1,5 +1,3 @@
-import math
-
 def split_highlow_bit(int_data: int):
     high = int(bin((int(int_data)>> 8) & 0b11111111), 2)
     low = int(bin((int(int_data) & 0x00FF) & 0b11111111), 2)
@@ -10,7 +8,7 @@ def joint_highlow_bit(high, low):
 
 def rad_per_sec_2_rpm(rps):
     return rps *  9.549 #(30 / math.pi)
- 
+
 def rpm_2_robomas_command(rpm):
     return rpm * 2
 def raw_rpm2rpm(raw,gear):

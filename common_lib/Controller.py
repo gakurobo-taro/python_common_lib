@@ -155,7 +155,7 @@ class Buttons:
 
     """
 
-    def __init__(self, Btn_assign: Union[F310_BTN, POTABLE_BTN]):
+    def __init__(self, Btn_assign: ControllerType):
         self.__btn_assign = Btn_assign
         self.__btns = [Button() for i in range(8)]
         self.__old_btns = [0] * 8
@@ -221,7 +221,7 @@ class Buttons:
             self.__old_btns[btn.arr_id] = data[btn.btn_assign]
         return
 
-    def add_event(self, index: int, event_type: int, event: Callable):
+    def add_event(self, target_button_index: int, event_type: int, event: Callable):
         """
         Adds an event to a button.
 
@@ -236,56 +236,22 @@ class Buttons:
 
         """
         if event_type == EventType.PUSHDOWN:
-            self.__btns[index].add_pushdown_event(event)
+            self.__btns[target_button_index].add_pushdown_event(event)
         elif event_type == EventType.PULLUP:
-            self.__btns[index].add_pullup_event(event)
+            self.__btns[target_button_index].add_pullup_event(event)
         elif event_type == EventType.PUSHING:
-            self.__btns[index].add_pushing_event(event)
+            self.__btns[target_button_index].add_pushing_event(event)
         else:
             raise ValueError(f"Invalid event type: {event_type}")
 
         return
-
-
-class F310_BTN(Enum):
-    A = (0, 1)
-    B = (1, 2)
-    X = (2, 0)
-    Y = (3, 3)
-    LB = (4, 4)
-    RB = (5, 5)
-    LSTICK = (6, 10)
-    RSTICK = (7, 11)
-
-    def __init__(self, arr_id, btn_assign):
-        super().__init__()
-        self.arr_id = arr_id
-        self.btn_assign = btn_assign
-        return
-
-class POTABLE_BTN(Enum):
-    A = (0, 0)
-    B = (1, 1)
-    X = (2, 2)
-    Y = (3, 3)
-    LB = (4, 4)
-    RB = (5, 5)
-    LSTICK = (6, 9)
-    RSTICK = (7, 10)
-
-    def __init__(self, arr_id, btn_assign):
-        super().__init__()
-        self.arr_id = arr_id
-        self.btn_assign = btn_assign
-        return
-
 
 # For Debug mode
 class TestNode(Node):
     def __init__(self) -> None:
         super().__init__("test_node")
         self.sub = self.create_subscription(Joy, "joy", self.callback, 10)
-        self.button = Buttons(POTABLE_BTN)
+        self.button = Buttons(ControllerType.F310.btn_config)
         return
 
     def callback(self,data):
