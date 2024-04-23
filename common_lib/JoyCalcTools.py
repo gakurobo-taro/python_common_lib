@@ -1,4 +1,5 @@
-from enum_conf import *
+# from enum_conf import *
+from common_lib.enum_conf import ControllerType
 
 class JoyCalcTools:
     def __init__(self, MODE):
