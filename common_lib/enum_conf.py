@@ -88,10 +88,27 @@ class EventType(IntEnum):
     PULLUP = 0x1
     PUSHING = 0x2
 
+# class SHOOTING_STATUS(IntEnum):
+#     WAIT = 0 #ダクテッドが下、ベロがしまってある、押し出しが初期位置
+#     WAIT_2 = 5
+#     SHOOT_SET_1 = 1 #ダクテッドが上、ベロがしまってある、押し出しが初期位置
+#     SHOOT_SET_2 = 2 #ダクテッドが上、ベロが出ている、押し出しが初期位置
+#     SHOOT_WAIT = 3 #ダクテッドが上、ベロが出ている、押し出しが待機位置
+#     SHOOT = 4 #ダクテッドが上、ベロが出ている、押し出しが発射位置
+
+
 class SHOOTING_STATUS(IntEnum):
-    WAIT = 0 #ダクテッドが下、ベロがしまってある、押し出しが初期位置
-    WAIT_2 = 5
-    SHOOT_SET_1 = 1 #ダクテッドが上、ベロがしまってある、押し出しが初期位置
-    SHOOT_SET_2 = 2 #ダクテッドが上、ベロが出ている、押し出しが初期位置
-    SHOOT_WAIT = 3 #ダクテッドが上、ベロが出ている、押し出しが待機位置
-    SHOOT = 4 #ダクテッドが上、ベロが出ている、押し出しが発射位置
+    WAIT = 0 # 初期(一応ある)
+    DUCTED_UP = 1 # ダクテッドを上げる
+    PUSH_WAIT = 2 # 押し出し待機位置
+    BERO_OUT = 3 # ベロを出す
+    DUCTED_OFF = 4 # ダクテッドを切る
+    # ここまで1シーケンス
+    PUSH = 5 # 押し出し
+    BERO_ORIGIN = 6 # ベロをしまう
+    PUSH_ORIGIN = 7 # 押し出しを初期位置
+    DUCTED_DOWN = 8 # ダクテッドを下げる
+    # 0に戻す
+    # ここまで1シーケンス
+
+

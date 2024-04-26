@@ -6,23 +6,23 @@ class JoyCalcTools:
         self.__MODE = MODE
         return
 
-    def recalculate_joy(self, joy):
+    def recalculate_joy(self, data):
         recalc_joy = [0] * 8
         if self.__MODE == ControllerType.POTABLE.controller_id:
-            recalc_joy[0] = joy.axes[0] * 127  #left-horizontal
-            recalc_joy[1] = joy.axes[1] * 127  #left-vertical
-            recalc_joy[2] = joy.axes[3] * -127  #right-horizontal
-            recalc_joy[3] = joy.axes[4] * -127  #right-vertical
-            recalc_joy[4] = joy.axes[2] * 127 + 128 #left-trigger
-            recalc_joy[5] = joy.axes[5] * 127 + 128 #right-trigger
+            recalc_joy[0] = data.axes[0] * 1  #left-horizontal
+            recalc_joy[1] = data.axes[1] * -1  #left-vertical
+            recalc_joy[2] = data.axes[3] * -1  #right-horizontal
+            recalc_joy[3] = data.axes[4] * -1  #right-vertical
+            recalc_joy[4] = data.axes[2] * 1 + 1 #left-trigger
+            recalc_joy[5] = data.axes[5] * 1 + 1 #right-trigger
             recalc_joy[6] = 0 #none
             recalc_joy[7] = 0 #none
             print(recalc_joy)
         elif self.__MODE == ControllerType.F310.controller_id:
-            recalc_joy[0] = joy.axes[0] * 127  #left-horizontal
-            recalc_joy[1] = joy.axes[1] * -127  #left-vertical
-            recalc_joy[2] = joy.axes[2] * -127  #right-horizontal
-            recalc_joy[3] = joy.axes[3] * 127  #right-vertical
+            recalc_joy[0] = data.axes[0] * 127  #left-horizontal
+            recalc_joy[1] = data.axes[1] * -127  #left-vertical
+            recalc_joy[2] = data.axes[2] * -127  #right-horizontal
+            recalc_joy[3] = data.axes[3] * 127  #right-vertical
             recalc_joy[4] = 0 #none
             recalc_joy[5] = 0 #none
             recalc_joy[6] = 0 #none
