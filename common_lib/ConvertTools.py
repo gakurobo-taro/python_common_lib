@@ -10,7 +10,7 @@ This function converts a float value to a list of integers using the struct modu
 def float_to_int_list(float_value: float) -> list[int]:
     # float型の値をバイナリに変換
     binary_data = struct.pack('<f', float_value)
-    # ��イナリデータをint型に変換し、8ビットずつリストに格��
+    # バイナリデータをint型に変換し、8ビットずつリストに格納
     int_list = [int(byte) for byte in binary_data]
 
     return int_list
@@ -26,7 +26,7 @@ This function converts a list of integers back to a float value using the struct
 def int_list_to_float(int_list: list[int]) -> float:
     # int型のリストをバイナリデータに変換
     binary_data = bytes(int_list)
-    # ��イナリデータをfloat型に変換
+    # バイナリデータをfloat型に変換
     float_value = struct.unpack('<f', binary_data)[0]
     return float_value
 
