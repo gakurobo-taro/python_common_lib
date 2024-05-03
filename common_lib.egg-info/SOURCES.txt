@@ -1,6 +1,7 @@
 setup.py
 common_lib/Controller.py
 common_lib/ConvertTools.py
+common_lib/GearCalcTools.py
 common_lib/JoyCalcTools.py
 common_lib/RobomusTools.py
 common_lib/UsbCan.py

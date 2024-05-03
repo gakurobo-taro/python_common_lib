@@ -17,16 +17,17 @@ class JoyCalcTools:
             recalc_joy[5] = data.axes[5] * 1 + 1 #right-trigger
             recalc_joy[6] = 0 #none
             recalc_joy[7] = 0 #none
-            print(recalc_joy)
         elif self.__MODE == ControllerType.F310.controller_id:
-            recalc_joy[0] = data.axes[0] * 127  #left-horizontal
-            recalc_joy[1] = data.axes[1] * -127  #left-vertical
-            recalc_joy[2] = data.axes[2] * -127  #right-horizontal
-            recalc_joy[3] = data.axes[3] * 127  #right-vertical
+            recalc_joy[0] = data.axes[0] * 1  #left-horizontal
+            recalc_joy[1] = data.axes[1] * -1  #left-vertical
+            recalc_joy[2] = data.axes[2] * -1  #right-horizontal
+            recalc_joy[3] = data.axes[3] * 1  #right-vertical
             recalc_joy[4] = 0 #none
             recalc_joy[5] = 0 #none
             recalc_joy[6] = 0 #none
             recalc_joy[7] = 0 #none
 
-        recalc_joy = list(map(int, recalc_joy))
+        recalc_joy = list(map(float, recalc_joy))
+        print("recalc:", recalc_joy)
+
         return recalc_joy
