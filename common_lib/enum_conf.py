@@ -1,4 +1,4 @@
-from enum import IntEnum, Enum
+from enum import IntEnum, Enum, auto
 
 class WheelType(IntEnum):
     OMNI_3 = 0
@@ -98,17 +98,19 @@ class EventType(IntEnum):
 
 
 class SHOOTING_STATUS(IntEnum):
-    WAIT = 0 # 初期(一応ある)
-    DUCTED_UP = 1 # ダクテッドを上げる
-    PUSH_WAIT = 2 # 押し出し待機位置
-    BERO_OUT = 3 # ベロを出す
-    DUCTED_OFF = 4 # ダクテッドを切る
+    WAIT = auto() # 初期(一応ある)
+    DUCTED_UP = auto() # ダクテッドを上げる
+    PUSH_WAIT = auto() # 押し出し待機位置
+    BERO_OUT = auto() # ベロを出す
+    DUCTED_OFF = auto() # ダクテッドを切る
     # ここまで1シーケンス
-    PUSH = 5 # 押し出し
-    BERO_ORIGIN = 6 # ベロをしまう
-    PUSH_ORIGIN = 7 # 押し出しを初期位置
-    DUCTED_DOWN = 8 # ダクテッドを下げる
+    PUSH = auto() # 押し出し
+    BERO_ORIGIN = auto() # ベロをしまう
+    PUSH_ORIGIN = auto() # 押し出しを初期位置
+    DUCTED_DOWN = auto() # ダクテッドを下げる
     # 0に戻す
     # ここまで1シーケンス
+    SHOOT_MOTOR_ON = auto() # シューティングモーターを回す
+    SHOOT_MOTOR_OFF = auto() # シューティングモーターを止める
 
 
