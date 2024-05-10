@@ -110,8 +110,14 @@ class SHOOTING_STATUS(IntEnum):
     DUCTED_DOWN = auto() # ダクテッドを下げる
     # 0に戻す
     # ここまで1シーケンス
-    SHOOT_MOTOR_ON_STRONG = auto() # シューティングモーターを回す(強力)
-    SHOOT_MOTOR_ON_WEAK = auto() # シューティングモーターを回す(弱い)
+    SHOOT_MOTOR_ON = auto() # シューティングモーターを回す(強力)
     SHOOT_MOTOR_OFF = auto() # シューティングモーターを止める
 
 
+class SPEED(Enum):
+    SLOW = 1
+    FAST = 3
+
+class R_SPEED(Enum):
+    SLOW = 1
+    FAST = 2

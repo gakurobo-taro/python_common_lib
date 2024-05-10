@@ -16,10 +16,11 @@ class UsbCan:
 
     """
 
-    def __init__(self, use: bool, bus: str):
+    def __init__(self, use: bool, bus: str, log:bool = True):
         self.__state = False
         self.__usemode = use
         self.__bus = bus
+        self.__log = log
         return
 
     def open(self):
@@ -53,8 +54,10 @@ class UsbCan:
         if self.__usemode == True:
             if self.__state == True:
                 self.slcan.send(msg=message)
-                print("CanMessage Send Success")
-        print(message)
+                if self.__log:
+                    print("CanMessage Send Success")
+        if self.__log:
+            print(message)
         return
 
     def receive(self):
@@ -69,7 +72,7 @@ class UsbCan:
 
         """
         if self.__state == True:
-            msg = self.slcan.recv(0.001)
+            msg = self.slcan.recv(0.000)
         else:
             msg = None
         return msg

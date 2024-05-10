@@ -42,7 +42,7 @@ def calc_gear(const: float, rad:float) -> float:
     """
     return const * rad / (2 * np.pi)
 
-def calc_cm_to_rad(const: float, mm: float) -> float:
+def calc_mm_to_rad(const: float, mm: float) -> float:
     """
     This function converts centimeters to radians given a constant and a length in millimeters.
 
@@ -69,7 +69,7 @@ def calc_deg_to_rad(degrees: float) -> float:
 
 import numpy as np
 
-def calc_rad_to_cm(const: float, rad: float) -> float:
+def calc_rad_to_mm(const: float, rad: float) -> float:
     """
     This function converts radians to centimeters given a constant and an angle in radians.
 
