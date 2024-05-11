@@ -115,8 +115,8 @@ class SHOOTING_STATUS(IntEnum):
 
 
 class SPEED(Enum):
-    SLOW = 1
-    FAST = 3
+    SLOW = 1.0
+    FAST = 3.0
 
 class R_SPEED(Enum):
     SLOW = 1
