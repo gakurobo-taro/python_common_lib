@@ -72,7 +72,7 @@ class UsbCan:
 
         """
         if self.__state == True:
-            msg = self.slcan.recv(0.000)
+            msg = self.slcan.recv(0.001)
         else:
             msg = None
         return msg
