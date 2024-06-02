@@ -22,9 +22,9 @@ class F310_BTN(Enum):
         return
 
 class POTABLE_BTN(Enum):
-    A = (0, 0)
+    A = (0, 1)
     B = (1, 1)
-    X = (2, 2)
+    X = (2, 0)
     Y = (3, 3)
     LB = (4, 4)
     RB = (5, 5)
