@@ -6,9 +6,9 @@ class WheelType(IntEnum):
     MECHANUM = 2
 
 class F310_BTN(Enum):
-    A = (0, 1)
+    A = (0, 0)
     B = (1, 2)
-    X = (2, 0)
+    X = (2, 1)
     Y = (3, 3)
     LB = (4, 4)
     RB = (5, 5)
